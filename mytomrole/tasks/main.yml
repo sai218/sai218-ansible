@@ -12,12 +12,11 @@
 
 - name: install admin pages 
   yum:
-    name: "{{item}}"
+    name: tomcat-webapps
     state: present
-  with_items:
-    - tomcat-webapps
-    - tomcat-admin-webapps
-
+  yum:
+    name: tomcat-admin-webapps
+    state: present 
 - name: copy tomuser file into tomcat  
   template:
     src: templates/tomuser.j2
